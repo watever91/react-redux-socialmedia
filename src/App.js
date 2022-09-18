@@ -3,7 +3,7 @@ import Posts from './Posts'
 import './style.css';
 import { useDispatch } from 'react-redux';
 import { addPost } from "./store/mainReducer";
-import { uuid } from "uuid"
+import { v4 as uuid } from "uuid"
 export default function App() {
   const [text, setText] = useState('');
   const dispatch = useDispatch();
