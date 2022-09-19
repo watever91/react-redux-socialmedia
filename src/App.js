@@ -1,4 +1,4 @@
-import React, { useState, useId } from 'react';
+import React, { useState } from 'react';
 import Posts from './Posts'
 import './style.css';
 import { useDispatch } from 'react-redux';
@@ -7,11 +7,10 @@ import { v4 as uuid } from "uuid"
 export default function App() {
   const [text, setText] = useState('');
   const dispatch = useDispatch();
-  const id = useId()
-
   const newPost = (e) => {
     e.preventDefault();
     dispatch(addPost({id: uuid() , text: text}))
+    setText("")
   };
 
   return (

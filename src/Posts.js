@@ -1,14 +1,19 @@
-import React, {useEffect} from 'react';
-import { useSelector } from 'react-redux';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { removePost } from './store/mainReducer';
 const Posts = () => {
   const posts = useSelector((state) => state.main.posts);
-
-  useEffect(()=> console.log(posts))
-
+  const dispatch = useDispatch()
+  const handleDelete = (id) => {
+    dispatch(removePost(id))
+  };
   return (
     <div>
       {posts.map((post) => (
-        <h1 key={post.id}>{post.text}</h1>
+        <div key={post.id} style={}>
+          <h1>{post.text}</h1>
+          <button onClick={() => handleDelete(post.id)}>delete</button>
+        </div>
       ))}
     </div>
   );
